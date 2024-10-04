@@ -1,5 +1,5 @@
-#ifndef STACKINT_H
-#define STACKINT_H
+#ifndef ASD_STACKINT_H
+#define ASD_STACKINT_H
 
 #define DEFAULT_STK_SIZE 10u
 
@@ -88,4 +88,4 @@ void print_stackint_state(struct stackint *stk);
 
 void test_stackint();
 
-#endif // STACKINT_H
+#endif // ASD_STACKINT_H

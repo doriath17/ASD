@@ -29,6 +29,8 @@ void test_sort(void (*sort)(int *, int));
 
 void full_test(void (*sort)(int *, int));
 
+void queueint_test();
+
 void bst_test();
 
 #endif  //  TESTING_H

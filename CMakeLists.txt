@@ -7,6 +7,7 @@ add_library(util
     ${UTIL_DIR}/array_util.c
     ${UTIL_DIR}/stackint.c
     ${UTIL_DIR}/stackptr.c
+    ${UTIL_DIR}/queueint.c
     ${UTIL_DIR}/timer.c 
     )
 target_include_directories(util PUBLIC ${UTIL_DIR}/header)
@@ -34,6 +35,7 @@ add_library(testing
     ${TESTING_DIR}/heapsort_test.c
     ${TESTING_DIR}/sorting_test.c 
     ${TESTING_DIR}/bst_test.c 
+    ${TESTING_DIR}/queueint_test.c 
 )
 target_include_directories(testing PUBLIC ${TESTING_DIR}/header)
 target_link_libraries(testing

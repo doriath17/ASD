@@ -7,7 +7,8 @@
 
 int main(){
 
-    bst_test();
+    // bst_test();
+    queueint_test();
 
     return 0;       
 }

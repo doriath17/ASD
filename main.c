@@ -6,9 +6,9 @@
 #include <stdio.h>
 
 int main(){
-
+    binary_tree_test();
     // bst_test();
-    queueint_test();
+    // queueint_test();
 
     return 0;       
 }

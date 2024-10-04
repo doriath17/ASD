@@ -1,5 +1,5 @@
-#ifndef ASD_QUEUEINT_H
-#define ASD_QUEUEINT_H
+#ifndef ASD_QUEUEPTR_H
+#define ASD_QUEUEPTR_H
 
 /**
  * arr      :   the array implementing the queue.
@@ -24,8 +24,8 @@
  * Fullness:  if head = tail + 1 the queue is full
  *      -> to insert a resize should take palce.
  */
-struct queueint {
-    int *arr;
+struct queueptr {
+    void **arr;
     int size;
     int head;
     int tail;
@@ -48,7 +48,7 @@ struct queueint {
 
 
 /**
- * qint     :   a not-NULL queueint variable (static o dinamic) to initialize.
+ * qint     :   a not-NULL queueptr variable (static o dinamic) to initialize.
  * 
  * This function initializes the queue to its initial state:
  *      -   an array of DEFAULT_QUEUE_SIZE elements is malloc-allocated.
@@ -56,45 +56,45 @@ struct queueint {
  *      -   head = -1   // emptiness
  *      -   tail = -1
  * 
- * It returns a pointer to the new allocated queueint structure.
+ * It returns a pointer to the new allocated queueptr structure.
  * It returns NULL if there is a problem with malloc: the caller should
  * control the return value to assure no errors have occurred.
  * 
- * ATTENTION: do not use this function on a already initialized queueint:
+ * ATTENTION: do not use this function on a already initialized queueptr:
  * this function will not free the previous array. If it has been allocated
- * using malloc, then a memory leakage could occur. Use reset_queueint instead.
+ * using malloc, then a memory leakage could occur. Use reset_queueptr instead.
  */
 #define DEFAULT_QUEUE_SIZE  10
-struct queueint *init_queueint(struct queueint *quint);
+struct queueptr *init_queueptr(struct queueptr *quptr);
 
 
 /**
- * qint     :   a not-NULL queueint variable (static o dinamic) to initialize.
+ * qint     :   a not-NULL queueptr variable (static o dinamic) to initialize.
  * 
- * You can use this function if you want to re-initialize a queueint to 
+ * You can use this function if you want to re-initialize a queueptr to 
  * its default state. It will free and replace the already initialized array.
  *
  * Return
- * It returns a pointer to the new allocated queueint structure.
+ * It returns a pointer to the new allocated queueptr structure.
  * It returns NULL if there is a problem with malloc: the caller should
  * control the return value to assure no errors have occurred. 
  */
 #define QUEUE_RESIZE_FACTOR 2
-struct queueint *reset_queueint(struct queueint *quint);
+struct queueptr *reset_queueptr(struct queueptr *quptr);
 
 
 /**
- * qint     :   a not-NULL queueint variable (static o dinamic) to initialize.
+ * qint     :   a not-NULL queueptr variable (static o dinamic) to initialize.
  * 
  * Return
  * This function frees the queue's malloc-allocated array. It is intended 
- * to be used just before a queueint goes out of scope to avoid memory leakage. 
+ * to be used just before a queueptr goes out of scope to avoid memory leakage. 
  */
-void free_queueint(struct queueint *quint);
+void free_queueptr(struct queueptr *quptr);
 
 
 /**
- * qint     :   a not-NULL queueint variable (static o dinamic) to initialize.
+ * qint     :   a not-NULL queueptr variable (static o dinamic) to initialize.
  * k        :   value to insert.
  * 
  * This function will insert the value k on the tail and update tail.
@@ -102,13 +102,13 @@ void free_queueint(struct queueint *quint);
  * the expansion.
  * 
  * Return
- * It returns quint but can return NULL if there were problems with the resize:
- * in such a case the quint is not modified and can be reused.
+ * It returns quptr but can return NULL if there were problems with the resize:
+ * in such a case the quptr is not modified and can be reused.
  */
-struct queueint *enqueue_int(struct queueint *quint, int k);
+struct queueptr *enqueue_ptr(struct queueptr *quptr, void *k);
 
 /**
- * qint     :   a not-NULL queueint variable (static o dinamic) to initialize.
+ * qint     :   a not-NULL queueptr variable (static o dinamic) to initialize.
  * 
  * This function will remove the value on the head and update head.
  * If the queue is empty calling this function will do nothing.
@@ -116,9 +116,9 @@ struct queueint *enqueue_int(struct queueint *quint, int k);
  * their default values (-1).
  * 
  * Return
- * It returns quint or NULL if the queue was empty.
+ * It returns quptr or NULL if the queue was empty.
  */
-struct queueint *dequeue_int(struct queueint *quint);
+struct queueptr *dequeue_ptr(struct queueptr *quptr);
 
 
 
@@ -138,31 +138,31 @@ struct queueint *dequeue_int(struct queueint *quint);
 
 
 /**
- * qint     :   a not-NULL queueint variable (static o dinamic) to initialize.
+ * qint     :   a not-NULL queueptr variable (static o dinamic) to initialize.
  * 
- * This functions verifies if quint is empty.
+ * This functions verifies if quptr is empty.
  * 
  * Return
  * If the queue is empty:       return = 1
  * If the queue is not empty:   return = 0
  */
-int is_queueint_empty(const struct queueint *quint);
+int is_queueptr_empty(const struct queueptr *quptr);
 
 
 /**
- * qint     :   a not-NULL queueint variable (static o dinamic) to initialize.
+ * qint     :   a not-NULL queueptr variable (static o dinamic) to initialize.
  * 
- * This functions verifies if quint is full.
+ * This functions verifies if quptr is full.
  * 
  * Return
  * If the queue is full:       return = 1
  * If the queue is not full:   return = 0
  */
-int is_queueint_full(const struct queueint *quint);
+int is_queueptr_full(const struct queueptr *quptr);
 
 
 /**
- * qint     :   a not-NULL queueint variable (static o dinamic) to initialize.
+ * qint     :   a not-NULL queueptr variable (static o dinamic) to initialize.
  * 
  * This function returns the value in tail and should be used 
  * only after assuring the queue is not empty.
@@ -170,11 +170,11 @@ int is_queueint_full(const struct queueint *quint);
  * Return
  * the value on tail.
  */
-int tail_int(struct queueint *quint);
+int tail_int(struct queueptr *quptr);
 
 
 /**
- * qint     :   a not-NULL queueint variable (static o dinamic) to initialize.
+ * qint     :   a not-NULL queueptr variable (static o dinamic) to initialize.
  * 
  * This function returns the value in head and should be used 
  * only after assuring the queue is not empty.
@@ -182,10 +182,6 @@ int tail_int(struct queueint *quint);
  * Return
  * the value on head.
  */
-int head_int(struct queueint *quint);
+int head_int(struct queueptr *quptr);
 
-void print_queueint_state(struct queueint *quint);
-void print_queueint(struct queueint *quint);
-void print_queueint_repr(struct queueint *quint);
-
-#endif // ASD_QUEUEINT_H
+#endif // ASD_QUEUEPTR_H

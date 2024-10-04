@@ -8,6 +8,7 @@ add_library(util
     ${UTIL_DIR}/stackint.c
     ${UTIL_DIR}/stackptr.c
     ${UTIL_DIR}/queueint.c
+    ${UTIL_DIR}/queueptr.c
     ${UTIL_DIR}/timer.c 
     )
 target_include_directories(util PUBLIC ${UTIL_DIR}/header)
@@ -34,6 +35,7 @@ set(TESTING_DIR ${CMAKE_SOURCE_DIR}/testing)
 add_library(testing 
     ${TESTING_DIR}/heapsort_test.c
     ${TESTING_DIR}/sorting_test.c 
+    ${TESTING_DIR}/binary_tree_test.c 
     ${TESTING_DIR}/bst_test.c 
     ${TESTING_DIR}/queueint_test.c 
 )

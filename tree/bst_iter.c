@@ -1,3 +1,4 @@
+#include <limits.h>
 #include "trees.h"
 #include "util.h" 
 
@@ -39,7 +40,7 @@ struct binary_tree *insertBSTiter(struct binary_tree *t, int k){
     return ret;
 }
 
-int checkBSTiter(struct binary_tree *t, int min, int max){
+int checkBSTiter_impl(struct binary_tree *t, int min, int max){
     struct binary_tree *ct = t;  
     int cmin = min, cmax = max, csx = 0, cdx = 0, ret = -1, lmax = max;
     struct stackptr stt;
@@ -88,6 +89,12 @@ int checkBSTiter(struct binary_tree *t, int min, int max){
     free_stackint(&stmax);
     return ret;
 }
+
+
+int checkBSTiter(struct binary_tree *t){
+    return checkBSTiter_impl(t, INT_MIN, INT_MAX);
+}
+
 
 struct binary_tree *successorBSTiter(struct binary_tree *t, int k){
     struct binary_tree *ct = t, *ret = NULL, *lt = NULL;

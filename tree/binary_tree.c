@@ -59,17 +59,17 @@ void preorder(struct binary_tree *t){
 
 void inorder(struct binary_tree *t){
     if (t != NULL){
-        preorder(t->sx);
+        inorder(t->sx);
         printf("%i ", t->key);
-        preorder(t->dx);
+        inorder(t->dx);
     }
 }
 
 
 void postorder(struct binary_tree *t){
     if (t != NULL){
-        preorder(t->sx);
-        preorder(t->dx);
+        postorder(t->sx);
+        postorder(t->dx);
         printf("%i ", t->key);
     }
 }

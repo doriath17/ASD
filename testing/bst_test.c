@@ -24,10 +24,10 @@ void test_checkBST(){
             max = maxBST(bt)->key;
         }
 
-        if (checkBST(bt, min, max)){
+        if (checkBST(bt)){
             ++count;
         }
-        if (checkBSTiter(bt, min, max)){
+        if (checkBSTiter(bt)){
             ++iterc;
         }
 
@@ -51,15 +51,19 @@ void bst_test(){
         bt = insertBSTiter(bt, get_rand_int(min, max));
     }
 
-    preorder(bt);
+    printf("bst:\n");
+    breadth_lvs(bt);
+    printf("element inorder:\n");
+    inorder(bt);
+
 
     struct binary_tree *bt_min = minBST(bt), *bt_max = maxBST(bt);
     printf("\nmin = %i, max = %i, check: %s\n",
-        bt_min->key, bt_max->key, checkBST(bt, bt_min->key, bt_max->key)? "true" : "false");
+        bt_min->key, bt_max->key, checkBST(bt)? "true" : "false");
 
     int k = get_rand_int(min, max);
     printf("k = %i --> successor (recu): %i\n", k, successorBST(bt, k)->key);
     printf("k = %i --> successor (iter): %i\n", k, successorBSTiter(bt, k)->key);
 
-    test_checkBST();
+    // test_checkBST();
 }

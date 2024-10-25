@@ -26,7 +26,8 @@ add_library(tree
     ${TREE_DIR}/binary_tree.c 
     ${TREE_DIR}/bst.c 
     ${TREE_DIR}/bst_iter.c 
-
+    ${TREE_DIR}/avl.c 
+    ${TREE_DIR}/avl_algo.c 
 )
 target_include_directories(tree PUBLIC ${TREE_DIR}/header)
 target_link_libraries(tree PUBLIC util)
@@ -38,7 +39,8 @@ add_library(testing
     ${TESTING_DIR}/binary_tree_test.c 
     ${TESTING_DIR}/bst_test.c 
     ${TESTING_DIR}/queueint_test.c 
-)
+    ${TESTING_DIR}/avl_test.c 
+    )
 target_include_directories(testing PUBLIC ${TESTING_DIR}/header)
 target_link_libraries(testing
     PUBLIC util

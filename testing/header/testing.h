@@ -35,4 +35,6 @@ void binary_tree_test();
 
 void bst_test();
 
+void avl_test();
+
 #endif  //  TESTING_H

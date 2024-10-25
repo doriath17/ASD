@@ -65,6 +65,13 @@ void inorder(struct binary_tree *t){
     }
 }
 
+void inorder_inverse(struct binary_tree *t){
+    if (t != NULL){
+        inorder_inverse(t->dx);
+        printf("%i ", t->key);
+        inorder_inverse(t->sx);
+    }
+}
 
 void postorder(struct binary_tree *t){
     if (t != NULL){

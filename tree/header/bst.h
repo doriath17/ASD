@@ -16,8 +16,33 @@
 int checkBST(struct binary_tree *t);
 int checkBSTiter(struct binary_tree *t);
 
+/**
+ * t        :   a binary tree (can be NULL)
+ * k        :   value to insert
+ * 
+ * This function will insert the value k in t maintaining 
+ * the total order.
+ * 
+ * returns
+ * the modified tree: t can change.
+ * NULL if there is an allocation error.
+ */
 struct binary_tree *insertBST(struct binary_tree *t, int k);
 struct binary_tree *insertBSTiter(struct binary_tree *t, int k);
+
+
+/**
+ * t        :   a binary tree (can be NULL)
+ * k        :   value to search for
+ * 
+ * This function will search the value k in t.
+ * 
+ * returns
+ * a node containing k.
+ * NULL if k is not in t.
+ */
+struct binary_tree *searchBST(struct binary_tree *bst, int k);
+
 
 /**
  * t        :   a binary tree (can be NULL)
@@ -45,5 +70,7 @@ struct binary_tree *maxBST(struct binary_tree *t);
 
 struct binary_tree *successorBST(struct binary_tree *t, int k);
 struct binary_tree *successorBSTiter(struct binary_tree *t, int k);
+
+struct binary_tree *predecessorBST(struct binary_tree *t, int k);
 
 #endif // BST_H
